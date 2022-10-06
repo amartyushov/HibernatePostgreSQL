@@ -6,6 +6,8 @@ plugins {
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 	kotlin("plugin.jpa") version "1.6.21"
+
+	id ("org.flywaydb.flyway") version "9.3.1"
 }
 
 group = "io.mart"
@@ -24,6 +26,9 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+	implementation("org.flywaydb:flyway-core:9.3.1")
+
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.testcontainers:junit-jupiter")
@@ -45,4 +50,11 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+flyway {
+	url = "jdbc:postgresql://localhost:5432/mart_db"
+	user = "migration_user"
+	password = "migration_password"
+	schemas = arrayOf("mart_schema")
 }
