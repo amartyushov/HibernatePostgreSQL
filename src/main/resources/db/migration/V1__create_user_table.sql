@@ -1,8 +1,10 @@
-CREATE TABLE IF NOT EXISTS users (
-    id INT NOT NULL,
-    username VARCHAR(255),
-    password VARCHAR(255),
-    email VARCHAR(255),
-    role VARCHAR(255),
-    PRIMARY KEY (id)
+CREATE TABLE users (
+    "id" 			UUID   			NOT NULL,
+    "name" 			varchar(50)   	NOT NULL,
+    "birthdate" 	date   			NOT NULL,
+    "version" 		int   			NOT NULL,
+    "created_at" 	timestamptz   	NOT NULL,
+    "updated_at" 	timestamptz   	NOT NULL,
+
+    CONSTRAINT "pk_users" PRIMARY KEY ("id")
 );

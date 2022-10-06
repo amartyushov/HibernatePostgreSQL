@@ -7,6 +7,8 @@ GRANT USAGE, CREATE ON SCHEMA mart_schema TO migration_role;
 -- I think that during migration we should not touch data (well, until there is a real need for it)
 --GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA mart_schema TO migration_role;
 --ALTER DEFAULT PRIVILEGES IN SCHEMA mart_schema GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO migration_role;
+GRANT SELECT ON ALL TABLES IN SCHEMA mart_schema TO migration_role;
+ALTER DEFAULT PRIVILEGES IN SCHEMA mart_schema GRANT SELECT ON TABLES TO migration_role;
 GRANT USAGE ON ALL SEQUENCES IN SCHEMA mart_schema TO migration_role;
 ALTER DEFAULT PRIVILEGES IN SCHEMA mart_schema GRANT USAGE ON SEQUENCES TO migration_role;
 
